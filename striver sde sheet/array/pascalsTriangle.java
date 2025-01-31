@@ -1,5 +1,11 @@
 //https://leetcode.com/problems/pascals-triangle/
 
+// We will be using the combination formula which is n-1Cr-1. 
+// Here n-1 = row number
+// r-1 = column number
+
+// So we use the first approach which is using the combination formula.
+
 import java.util.ArrayList;
 import java.util.List;
 
