@@ -3,6 +3,9 @@
 
 
 //down below is the brute force approach to solve the problem.
+
+import java.util.Arrays;
+
 class Solution {
     public boolean containsDuplicate(int[] nums) {
         int l=nums.length;
@@ -27,7 +30,7 @@ class Solution {
 // We can even sort the given array and check the previous elements if they are equal or not.
 // time complexity is O(nlogn) and space complexity is O(1)
 
-class Solution {
+class Solution2 {
     public boolean containsDuplicate(int[] nums) {
         Arrays.sort(nums);
         for (int i=1;i<nums.length;i++)
