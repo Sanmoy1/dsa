@@ -1,6 +1,7 @@
 //https://leetcode.com/problems/two-sum/description/
 
 //brute force approach
+//time complexity is O(n^2) and space complexity is O(1)
 
 class Solution {
     public int[] twoSum(int[] nums, int target) {
