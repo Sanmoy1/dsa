@@ -39,3 +39,8 @@ public class Solution {
         return true;
     }
 }
+
+
+//optimized approach using hashmap
+//time complexity is O(n*m)
+
