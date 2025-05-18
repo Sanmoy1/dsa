@@ -1,23 +1,34 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+class test {
+    public int longestConsecutive(int[] nums) {
 
-public class test {
-    
-    public static int comeon(List<List<Integer>> arr)
-    {
-        return 0;
+        for (int i=0;i<nums.length-1;i++)
+        {
+            int min=i;
+            for(int j=i+1;j<nums.length;j++)
+            { 
+                if (nums[j]<nums[min])
+                min=j;
+            }
+            int t=nums[i];
+            nums[i]=nums[min];
+            nums[min]=t;
+        }
+        System.out.println(Arrays.toString(nums));
+        int c=0;
+        for(int i=0;i<nums.length-1;i++)
+        {
+            if(nums[i+1]-nums[i]==1)
+            c++;
+            System.out.println(nums[i+1]+"-"+nums[i]+"="+c);
+            
+        }
+        return c+1;    
     }
     public static void main(String[] args) {
-        List<List<Integer>> arr=new ArrayList<>();
-         arr.add(Arrays.asList(1, 1, 1, 0, 0, 0));
-        arr.add(Arrays.asList(0, 1, 0, 0, 0, 0));
-        arr.add(Arrays.asList(1, 1, 1, 0, 0, 0));
-        arr.add(Arrays.asList(0, 0, 2, 4, 4, 0));
-        arr.add(Arrays.asList(0, 0, 0, 2, 0, 0));
-        arr.add(Arrays.asList(0, 0, 1, 2, 4, 0));
-        for (List<Integer> i: arr){
-            System.out.println(i);
-        }
+        int arr[]={9,1,4,7,3,-1,0,5,8,-1,6};
+        test obj=new test();
+
+        System.out.println(obj.longestConsecutive(arr));
     }
 }
