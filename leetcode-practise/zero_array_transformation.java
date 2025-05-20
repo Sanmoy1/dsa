@@ -1,4 +1,12 @@
-class test {
+//https://leetcode.com/problems/zero-array-transformation-i/description/?envType=daily-question&envId=2025-05-20
+
+//3355. Zero Array Transformation I
+
+
+public class zero_array_transformation {
+    //time limit exceeded
+    //complexity O(n^2)
+
     public boolean isZeroArray(int[] nums, int[][] queries) {
         for (int[] i : queries) {
 
@@ -21,11 +29,5 @@ class test {
         return true;
 
     }
-
-    public static void main(String[] args) {
-        test obj = new test();
-        int nums[] = { 4, 3, 2, 1 };
-        int queries[][] = { { 1, 3 }, { 0, 2 } };
-        System.out.println(obj.isZeroArray(nums, queries));
-    }
+    
 }
