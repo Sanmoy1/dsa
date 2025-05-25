@@ -1,0 +1,1 @@
+we will be using hashset when we want to check unique elements either in an array or a string and also have the benefits of O(1) average time complexity for insertions and lookups.

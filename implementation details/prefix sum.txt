@@ -1,0 +1,4 @@
+Here we are using prefix sum when we need to calculate the sum of elements in a subarray efficiently. The prefix sum array allows us to compute the sum of any subarray in constant time after an initial preprocessing step.
+example:
+arr=[1, 2, 3, 4, 5]
+therefore prefixSum=[0, 1, 3, 6, 10, 15]
