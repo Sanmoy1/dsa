@@ -1,31 +1,38 @@
-class test {
-    public boolean isZeroArray(int[] nums, int[][] queries) {
-        for (int[] i : queries) {
+import java.util.Arrays;
 
-            int l = i[0];
-            int r = i[1];
+public class test{
 
-            for (int j = 0; j < nums.length; j++) {
-                if (j >= l && j <= r && nums[j] != 0) {
+    public int[] twoSum(int[] numbers, int target) {
+        int left = 0;
+        int length = numbers.length;
+        int right = length - 1;
+        int ans[] = new int[2];
+        while (left < right) {            
 
-                    nums[j] = nums[j] - 1;
+            if ((numbers[left] + numbers[right]) == target) 
+            {
+                ans[0] = left + 1;
+                ans[1] = right + 1;
+                return ans;
+            } 
+            else 
+            {
+                int mid = (left + right) / 2;
+                if (mid > target) {
+                    right = mid - 1;
+                } else {
+                    left=left+1;
                 }
             }
 
         }
-
-        for (int i : nums) {
-            if (i != 0)
-                return false;
-        }
-        return true;
-
+        return ans;
     }
 
     public static void main(String[] args) {
-        test obj = new test();
-        int nums[] = { 4, 3, 2, 1 };
-        int queries[][] = { { 1, 3 }, { 0, 2 } };
-        System.out.println(obj.isZeroArray(nums, queries));
+        test obj=new test();
+        int nums[]={2,7,11,15};
+        int target=9;
+        System.out.println(Arrays.toString(obj.twoSum(nums,target)));
     }
 }
