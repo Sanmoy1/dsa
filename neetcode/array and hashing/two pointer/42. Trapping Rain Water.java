@@ -34,4 +34,45 @@ class Solution {
         }
         return max;
     }
+
+    // Time complexity is O(n)
+    //Space complexity is O(n)
+    //counting the left max and right max at the current index using 2 arrays with individial loops
+    public int trap(int[] height) {
+        int l=height.length; 
+        int leftMax[]=new int[l];
+        int rightMax[]=new int[l];
+         leftMax[0]=height[0];
+         for(int i=1;i<l;i++)
+         {
+            if(leftMax[i-1]<height[i])
+            {
+                leftMax[i]=height[i];
+            }
+            else
+            {
+                leftMax[i]=leftMax[i-1];
+            }
+         }
+         rightMax[l-1]=height[l-1];
+         for(int i=l-2;i>=0;i--)
+         {
+            if(rightMax[i+1]<height[i])
+            {
+                rightMax[i]=height[i];
+            }
+            else
+            {
+                rightMax[i]=rightMax[i+1];
+            }
+         }
+         int count=0;
+         for(int i=0;i<l;i++)
+         {
+            int check=Math.min(leftMax[i],rightMax[i])-height[i];
+            if(check>0)
+            count+=check;
+         }
+         return count;
+    }
 }
