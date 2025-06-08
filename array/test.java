@@ -1,52 +1,32 @@
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Stack;
 
-
-import java.util.*;
 public class test{
-
-    static ArrayList<String> ans=new ArrayList<>();
-    public static void generateParenthesis(int n) {
-        helper("",n);
-        System.out.println(ans);
-        
-    }
-    public static void helper(String s,int n)
-    {
-        
-        if(s.length()==n*2 && validParentheses(s))
-        {
-            ans.add(s);
-            return;
-           
-        }
-         
-        helper(s+"(",n);
-        helper(s+")",n);
-    }
-    public static boolean validParentheses(String s)
-    {
-        Stack<Character> stack=new Stack<>();
-        for(int i=0;i<s.length();i++)
-        {
-            char ch=s.charAt(i);
-            if(ch=='(')
-            stack.push(ch);
-            else if(ch==')')
-            {
-                if(stack.isEmpty())
-                return false;
-                stack.pop();
-                
-            }
-
-        }     
-        
-        
-        return true;
-        
-    }
     public static void main(String[] args) {
-        generateParenthesis(3);
-        
-        
+        Queue<Integer> q = new PriorityQueue<>();
+        Stack<Integer> s = new Stack<>();
+        s.push(1);
+        s.push(4);
+        s.push(2);
+        s.push(10);
+        s.push(5);
+        s.pop();
+        System.out.println("stack"+s);
+        System.out.println("stack peek"+s.peek());
+              q.add(1);
+              q.add(4);
+              q.add(2);
+              q.add(10);
+              q.add(5);
+              q.poll();
+              q.poll();
+              q.poll();
+              q.poll();
+              q.poll();
+              System.out.println(q.poll());
+              System.out.println("queue"+q);
+              System.out.println("queue peek"+q.peek());
     }
 }
