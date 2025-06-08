@@ -1,69 +1,52 @@
-import java.util.Stack;
 
+
+import java.util.*;
 public class test{
-    Stack<Integer> stack;
-    Stack<Integer> minstack;
 
-    public test() {
-        stack=new Stack<>();
-        minstack=new Stack<>();
+    static ArrayList<String> ans=new ArrayList<>();
+    public static void generateParenthesis(int n) {
+        helper("",n);
+        System.out.println(ans);
         
     }
-    
-    public void push(int val) {
-        stack.push(val);
-        if(!minstack.isEmpty())
+    public static void helper(String s,int n)
+    {
+        
+        if(s.length()==n*2 && validParentheses(s))
         {
-            minstack.push(Math.min(val,minstack.peek()));
+            ans.add(s);
+            return;
+           
         }
-        else
-        minstack.push(val);
-        
+         
+        helper(s+"(",n);
+        helper(s+")",n);
     }
-    
-    public void pop() {
-        int element=stack.pop();;
-        if(element==minstack.peek() )
+    public static boolean validParentheses(String s)
+    {
+        Stack<Character> stack=new Stack<>();
+        for(int i=0;i<s.length();i++)
         {
-            // System.out.println("Current min: " + minstack.peek());
-            minstack.pop();
-            
-        }
-        
-        
-    }
-    
-    public int top() {
-        
-        return stack.peek();
-    }
-    
-    public int getMin() {
-        
-        return minstack.peek();
-    }
+            char ch=s.charAt(i);
+            if(ch=='(')
+            stack.push(ch);
+            else if(ch==')')
+            {
+                if(stack.isEmpty())
+                return false;
+                stack.pop();
+                
+            }
 
+        }     
+        
+        
+        return true;
+        
+    }
     public static void main(String[] args) {
-        test minStack = new test();
-        minStack.push(2);
-        System.out.println("Current min: " + minStack.getMin());
-        minStack.push(0);
-        System.out.println("Current min: " + minStack.getMin());
-        minStack.push(3);
-        System.out.println("Current min: " + minStack.getMin());
-        minStack.push(0);
+        generateParenthesis(3);
         
-        System.out.println("Current min: " + minStack.getMin()); 
-        minStack.pop();
-        System.out.println("Current min: " + minStack.getMin()); 
-        minStack.pop();
-        System.out.println("Current min: " + minStack.getMin()); 
-        minStack.pop();
-        // Assuming we want to handle the case when getMin is called on an empty stack
-        try {
-            System.out.println("Current min: " + minStack.getMin()); // Should throw exception
-        } catch (IllegalStateException e) {
-            System.out.println("Stack is empty. Cannot perform getMin.");
-        }
+        
     }
 }
