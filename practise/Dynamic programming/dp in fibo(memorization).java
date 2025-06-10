@@ -1,5 +1,7 @@
 import java.util.*;
 public class test{
+    //time complexity is O(n)
+    //space complexity is O(n)+O(n)
     int fibo(int n,int dp[])
     {
         if(n<=1)

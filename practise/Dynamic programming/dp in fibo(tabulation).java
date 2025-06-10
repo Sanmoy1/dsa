@@ -15,6 +15,21 @@ public class test{
         }
         
     }
+    // time cmplexity is O(n)
+    //space complexity is O(1)
+    // more optimised than the previous method
+    void fibo(int n)
+    {
+        int prev=1;
+        int prev2=0;
+        for(int i=2;i<=n;i++)
+        {
+            int curr=prev+prev2;
+            prev2=prev;
+            prev=curr;
+        }
+        System.out.println(prev);
+    }
     
     public static void main(String[] args) {
         Scanner in =new Scanner(System.in);
