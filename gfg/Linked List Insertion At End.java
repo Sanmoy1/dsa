@@ -16,7 +16,7 @@ class Solution {
         // code here
         Node newNode=new Node(x);
         
-        if(head==null)
+        if(head==null)poin
         return newNode;
         
         Node current=head;
