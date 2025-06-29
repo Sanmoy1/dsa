@@ -1,32 +1,46 @@
-import java.util.*;
-public class test{
-    // time cmplexity is O(n)
-    //space complexity is O(n)
-    void fibo(int n,int dp[])// dp in fibo using tabulation method
-    {
-        dp[0]=0;
-        dp[1]=1;
-        System.out.print(dp[0]+" "+dp[1]);
-        
-        for(int i=2;i<n;i++)
-        {
-            dp[i]=dp[i-1]+dp[i-2];
-            System.out.print(" " +dp[i]);
-        }
-        
-    }
-    
-    public static void main(String[] args) {
-        Scanner in =new Scanner(System.in);
-        System.out.println("Enter the number n:");
-        int n=in.nextInt();
-        test obj=new test();
-        int dp[]=new int[n+1];
-        for(int i=0;i<=n;i++)
-        {
-            dp[i]=-1;
-        }
-        obj.fibo(n, dp);
+import java.util.Stack;
+public class test {
 
+    public int largestRectangleArea(int[] heights) {
+        int n = heights.length;
+        int[] left = new int[n];
+        int[] right = new int[n];
+        Stack<Integer> stack = new Stack<>();
+    
+        // Fill left[]
+        for (int i = 0; i < n; i++) {
+            while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
+                stack.pop();
+            }
+            left[i] = stack.isEmpty() ? -1 : stack.peek();
+            stack.push(i);
+        }
+    
+        // Clear stack for right[]
+        stack.clear();
+    
+        // Fill right[]
+        for (int i = n - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
+                stack.pop();
+            }
+            right[i] = stack.isEmpty() ? n : stack.peek();
+            stack.push(i);
+        }
+    
+        // Calculate max area
+        int maxArea = 0;
+        for (int i = 0; i < n; i++) {
+            int width = right[i] - left[i] - 1;
+            int area = heights[i] * width;
+            maxArea = Math.max(maxArea, area);
+        }
+        return maxArea;
+    }
+
+    public static void main(String[] args) {
+        test t=new test();
+        int[] heights={2,1,5,6,2,3};
+        System.out.println(t.largestRectangleArea(heights));
     }
 }
