@@ -1,10 +1,14 @@
+// O(logn) time complexity
+// O(1) space complexity
+
+//we see which side is sorted as per as the middle element and then check if the target is in that side
 class Solution {
     public int search(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
 
         while (left <= right) {
-            int mid = left + (right - left) / 2;
+            int mid = left + (right - left) / 2; // to avoid integer overflow
 
             if (nums[mid] == target) {
                 return mid;
