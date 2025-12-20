@@ -1,3 +1,5 @@
+// question: https://leetcode.com/discuss/post/4167180/samsung-online-assessment-cylinder-stars-ty89/
+
 import java.util.*;
 
 class test {
@@ -55,3 +57,5 @@ class test {
         return answer;
     }
 }
+ 
+ //time complexity: O(N * M)
