@@ -1,3 +1,5 @@
+// time complexity: O(mxn)
+//space complexity: O(mxn)
 class Solution {
     public class pair {
         int row, col, time;
@@ -73,3 +75,24 @@ class Solution {
 
     }
 }
+
+
+// Use multi-source BFS
+// Put all initially rotten oranges (2) into the queue with time 0, and count all fresh oranges (1).
+// Queue stores (row, col, time)
+// We need the position to check neighbors and the time to know when it rotted.
+// BFS = spread minute by minute
+// Each BFS layer / popped node spreads rot to its 4-directional neighbors (up, down, left, right), so
+// 1 BFS level = 1 minute.
+// For every fresh neighbor
+// If the neighbor is inside bounds and fresh:
+// mark visited
+// push with time + 1
+// decrease fresh
+// Final answer
+// if fresh > 0 → return -1 (some oranges unreachable)
+// else return totalTime (last time reached in BFS)
+
+// Memory line:
+
+// All rotten oranges start together, and BFS spread time gives the answer.

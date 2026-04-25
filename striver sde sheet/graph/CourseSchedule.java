@@ -20,7 +20,7 @@ class Solution {
         }
 
         Queue<Integer> q = new LinkedList<Integer>();
-        for(int i = 0; i<numCourses; i++) {
+        for(int i = 0; i<numCourses; i++) {// this is done in order to start with the nodes with 0 indegree as no other nodes will come first before them in topo sort
             if(indegree[i] == 0) {
                 q.add(i);
             }
@@ -38,7 +38,7 @@ class Solution {
 
             for(int it : adj.get(node)) {
                 indegree[it]--;
-                if(indegree[it] == 0) q.add(it);
+                if(indegree[it] == 0) q.add(it);// we add as soon as the indegree becomes 0
             }
         }
 
